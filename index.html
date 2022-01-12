@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <script src="javascript.js"></script> -->
+
+  <title>Rock Paper Scissors - Home</title>
+</head>
+<body>
+  
+  <script>
+    function computerPlay() {
+      const rps = ["rock", "paper", "scissors"];
+      let randonNumber = Math.floor(Math.random() * 3);
+
+      return rps[randonNumber];
+    }
+
+    function playRound(playerSelection, computerSelection) {
+      playerSelection = playerSelection.toLowerCase();
+
+      let playerScore = 0;
+      let computerScore = 0;
+
+      console.log(computerSelection);
+        
+      if (playerSelection === "rock") {
+        switch (computerSelection) {
+          case "paper":
+            // console.log(++computerScore);
+            return "You Lose! Paper beats Rock"
+            break;
+          case "scissors":
+            // console.log(++playerScore);
+            return "You Win! Rock beats paper"
+            break;
+          default:
+            console.log(computerScore);
+            console.log(playerScore);
+            return "You Tied";
+        }
+      } else if (playerSelection === "paper") {
+        switch (computerSelection) {
+          case "rock":
+            return "You Win! Paper beats rock"
+            break;
+          case "scissors":
+            return "You Lose! Scissors beats paper"
+            break;
+          default:
+            return "You Tied";
+        }
+      } else if (playerSelection === "scissors") {
+        switch (computerSelection) {
+          case "paper":
+            return "You Win! Scissors beats paper"
+            break;
+          case "rock":
+            return "You Lose! Rock beats scissors"
+            break;
+          default:
+            return "You Tied";
+        }
+      } 
+    }
+
+      // If Players throws rock:
+        // if playerSelection equals rock & compSelection equals paper --> Comp wins
+        // if playerSelection equals rock & compSelection equals scissors --> player wins
+
+      // If player throws paper:
+        // if playerSelection equals paper & compSelection equals rock --> player wins
+        // if playerSelection equals paper & compSelection equals scissors --> comp wins
+
+      // if Player throws scissors;
+        // if playerSelection equals scissors & compSelection equals paper --> player wins
+        // if playerSelection equals scissors & compSelection equals rock --> comp wins
+ 
+      // Else it's a tie?
+
+    const playerSelection = "rock";
+    const computerSelection = computerPlay();
+
+    console.log(playRound(playerSelection, computerSelection));
+    // console.log(computerScore);
+    // comsole.log(playerScore);
+
+
+
+  </script>
+</body>
+</html>
