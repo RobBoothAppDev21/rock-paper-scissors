@@ -19,76 +19,80 @@
       return rps[randonNumber];
     }
 
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieOutcome = 0
+
     function playRound(playerSelection, computerSelection) {
       playerSelection = playerSelection.toLowerCase();
-
-      let playerScore = 0;
-      let computerScore = 0;
-
-      console.log(computerSelection);
         
       if (playerSelection === "rock") {
         switch (computerSelection) {
           case "paper":
-            // console.log(++computerScore);
-            return "You Lose! Paper beats Rock"
+            ++computerScore
             break;
           case "scissors":
-            // console.log(++playerScore);
-            return "You Win! Rock beats paper"
+            ++playerScore
             break;
           default:
-            console.log(computerScore);
-            console.log(playerScore);
+            ++tieOutcome;
             return "You Tied";
         }
       } else if (playerSelection === "paper") {
         switch (computerSelection) {
           case "rock":
-            return "You Win! Paper beats rock"
+            ++playerScore
             break;
           case "scissors":
-            return "You Lose! Scissors beats paper"
+            ++computerScore
             break;
           default:
+          ++tieOutcome;
             return "You Tied";
         }
       } else if (playerSelection === "scissors") {
         switch (computerSelection) {
           case "paper":
-            return "You Win! Scissors beats paper"
+            ++playerScore
             break;
           case "rock":
-            return "You Lose! Rock beats scissors"
+            ++computerScore
             break;
           default:
+          ++tieOutcome;
             return "You Tied";
         }
-      } 
+      }
     }
 
-      // If Players throws rock:
-        // if playerSelection equals rock & compSelection equals paper --> Comp wins
-        // if playerSelection equals rock & compSelection equals scissors --> player wins
+    function announceScore() {
+      console.log(`You scored ${playerScore}. The computer scored ${computerScore}. Ties: ${tieOutcome}`);
+    }
 
-      // If player throws paper:
-        // if playerSelection equals paper & compSelection equals rock --> player wins
-        // if playerSelection equals paper & compSelection equals scissors --> comp wins
+    function announceResult() {
 
-      // if Player throws scissors;
-        // if playerSelection equals scissors & compSelection equals paper --> player wins
-        // if playerSelection equals scissors & compSelection equals rock --> comp wins
- 
-      // Else it's a tie?
+      if (playerScore > computerScore) {
+        console.log("You win");
+        announceScore();
+      } else if (playerScore === computerScore) {
+        console.log("You tied with computer");
+        announceScore();
+      } else {
+        console.log("You lost.");
+        announceScore();
+      }
+    }
 
     const playerSelection = "rock";
     const computerSelection = computerPlay();
-
-    console.log(playRound(playerSelection, computerSelection));
-    // console.log(computerScore);
-    // comsole.log(playerScore);
-
-
+    
+    function game() {
+      for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerPlay())
+      }
+      
+      announceResult();
+    }
 
   </script>
 </body>
