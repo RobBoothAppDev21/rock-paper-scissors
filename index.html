@@ -5,124 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- <script src="javascript.js"></script> -->
+  <script src="rps-js.js" defer></script>
 
   <title>Rock Paper Scissors - Home</title>
 </head>
 <body>
   
-  <script>
-    function computerPlay() {
-      const rps = ["rock", "paper", "scissors"];
-      let randonNumber = Math.floor(Math.random() * 3);
+  <div class="container">
+    <h1>Rock, Paper, Scissors</h1>
 
-      return rps[randonNumber];
-    }
-
-    let playerScore = 0;
-    let computerScore = 0;
-    let tieOutcome = 0
-
-    function playRound(playerSelection, computerSelection) {
-      playerSelection = playerSelection.toLowerCase();
-        
-      if (playerSelection === "rock") {
-        switch (computerSelection) {
-          case "paper":
-            ++computerScore;
-            console.log(`You lose - ${computerSelection} beats ${playerSelection}.`);
-            break;
-          case "scissors":
-            ++playerScore;
-            console.log(`You win - ${playerSelection} beats ${computerSelection}.`);
-            break;
-          default:
-            ++tieOutcome;
-            console.log(`You tied. Both threw ${playerSelection}.`);
-        }
-      } else if (playerSelection === "paper") {
-        switch (computerSelection) {
-          case "rock":
-            ++playerScore;
-            console.log(`You win - ${playerSelection} beats ${computerSelection}.`);
-            break;
-          case "scissors":
-            ++computerScore;
-            console.log(`You lose - ${computerSelection} beats ${playerSelection}.`);
-            break;
-          default:
-            ++tieOutcome;
-            console.log(`You tied. Both threw ${playerSelection}.`);
-        }
-      } else if (playerSelection === "scissors") {
-        switch (computerSelection) {
-          case "paper":
-            ++playerScore;
-            console.log(`You win - ${playerSelection} beats ${computerSelection}.`);
-            break;
-          case "rock":
-            ++computerScore;
-            console.log(`You lose - ${computerSelection} beats ${playerSelection}.`);
-            break;
-          default:
-            ++tieOutcome;
-            console.log(`You tied. Both threw ${playerSelection}.`);
-        }
-      }
-    }
-
-    function announceScore() {
-      // console.log(`You scored ${playerScore}. The computer scored ${computerScore}. Ties: ${tieOutcome}`);
-      console.log(`Scoreboard: You ${playerScore}, Computer ${computerScore}, Ties ${tieOutcome}`);
-    }
-
-    function announceFinalResult() {
-
-      if (playerScore > computerScore) {
-        console.log("You win the game!");
-        announceScore();
-      } else if (playerScore === computerScore) {
-        console.log("You tied with the computer!");
-        announceScore();
-      } else {
-        console.log("You lost the game.");
-        announceScore();
-      }
-    }
-
-    // function checkPlayerInput() {
-
-    //   let keepLooping = true;
-
-    //   while (keepLooping) {
-    //     let playerSelection = prompt("Please throw 'rock', 'paper', or 'scissors'. Type 'quit' to end the game.");
-    //     playerSelection = playerSelection.toLowerCase();
-    //     if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-    //       keepLooping === false;
-    //       return playerSelection;
-    //     } else if (playerSelection === 'quit') {
-    //       keepLooping === false;
-    //       break
-    //     }
-    //   }
-    // }
-
-    const playerSelection = prompt("Please throw 'rock', 'paper', or 'scissors':");
-    // const computerSelection = computerPlay();
-    
-    function game() {
-
-      for (let i = 1; i < 6; i++) {
-        console.log(`Round #${i}:`)
-        playRound(playerSelection, computerPlay())
-        // announceResult();
-      }
-      
-      announceFinalResult();
-    }
-
-    console.log(game());
-
-  </script>
+    <p>Let's play a round!</p>
+    <div class="buttons">
+      <button class="button rock">Rock</button>
+      <button class="button paper">Paper</button>
+      <button class="button scissors">Scissors</button>
+    </div>
+    <div class="round-number"></div>
+    <div class="round-results"></div>
+    <div class="scoreboard"></div>
+    <div class="game-results"></div>
+  </div>
 </body>
 </html>
