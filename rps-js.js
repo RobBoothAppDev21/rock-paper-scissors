@@ -60,79 +60,37 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function announceScore() {
-  // console.log(`You scored ${playerScore}. The computer scored ${computerScore}. Ties: ${tieOutcome}`);
   return `Scoreboard: You ${playerScore}, Computer ${computerScore}, Ties ${tieOutcome}`;
 }
 
 function announceFinalResult() {
 
   if (playerScore > computerScore) {
-    // announceScore();
-    return "You win the game!";
+    return "You won the game!";
   } else if (playerScore === computerScore) {
-    // announceScore();
-    return "You tied with the computer!";
+      return "You tied with the computer!";
   } else {
-    // announceScore();
-    return "You lost the game.";
+      return "You lost the game.";
   }
 }
-
-// const playerThrow = document.querySelector('.button')
-// console.log(playerThrow);
 
 let i = 0;
 addEventListener('click', function(e) {
 
   if (i < 6) {
     i++;
-    document.getElementsByClassName('round-number')[0].innerHTML = (`Round #${i}:`)
+    document.getElementsByClassName('round-number')[0].textContent = (`Round #${i}:`)
+    document.getElementsByClassName("game-results")[0].textContent = "";
     let buttonClass = e.srcElement['className'];
     let playerThrow = buttonClass.replace('button ', '');
-    // console.log(buttonClass);
-    // document.getElementsByClassName("round-throw")[0].innerHTML = playerThrow;
-    document.getElementsByClassName("round-results")[0].innerHTML = playRound(playerThrow, computerPlay());
-    document.getElementsByClassName("scoreboard")[0].innerHTML = announceScore();
+    document.getElementsByClassName("round-results")[0].textContent = playRound(playerThrow, computerPlay());
+    document.getElementsByClassName("scoreboard")[0].textContent = announceScore();
     if (i == 5) {
-      document.getElementsByClassName("game-results")[0].innerHTML = announceFinalResult();
-     // Announce score after 5 rounds
-     i = 0; 
+      document.getElementsByClassName("game-results")[0].textContent = announceFinalResult();
+      i = 0;
+      playerScore = 0;
+      computerScore = 0; 
     }
   } 
 });
 
-// const buttons = document.querySelectorAll('.button')
-// buttons.forEach(button => console.log(button));
-// const playerSelection = prompt("Please throw 'rock', 'paper', or 'scissors':");
-// const computerSelection = computerPlay();
-
-function game() {
-
-  let i = 1;
-  while (i < 6) { // (let i = 1; i < 6; i++) {
-    document.getElementsByClassName('round-number')[0].innerHTML = (`Round #${i}:`)
-    i++
-    // announceResult();
-  }
-  
-  announceFinalResult();
-}
-
-// console.log(game());
-
-// function checkPlayerInput() {
-
-//   let keepLooping = true;
-
-//   while (keepLooping) {
-//     let playerSelection = prompt("Please throw 'rock', 'paper', or 'scissors'. Type 'quit' to end the game.");
-//     playerSelection = playerSelection.toLowerCase();
-//     if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-//       keepLooping === false;
-//       return playerSelection;
-//     } else if (playerSelection === 'quit') {
-//       keepLooping === false;
-//       break
-//     }
-//   }
-// }
